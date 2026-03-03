@@ -1,2 +1,75 @@
 # ORDER-RANKING-PB
-An online store needs a program that, given the details of an order, determines its shipping category and shipping cost.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+INTEGRANTES
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+- Juan Camilo Viadero Muriel
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+DESCRIPCIÓN DEL PROBLEMA
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+- Una tienda en línea necesita un programa que clasifique los pedidos según reglas de negocio y determine el costo de envío.
+- La clasificación depende del monto del pedido, tipo de cliente, cantidad de ítems y ciudad destino.
+- Las reglas pueden cruzarse, por lo que el orden de evaluación es clave.
+- El sistema debe devolver la categoría de despacho, el costo final y un mensaje al cliente.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+IPO
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Entradas               | Proceso                                                               | Salidas               |                 |                |
+| ---------------------- | --------------------------------------------------------------------- | --------------------- | --------------- | -------------- |
+| `monto` (decimal)      | Evaluar si aplica envío gratis (monto ≥ 150000 && cliente recurrente) | Categoría de despacho |                 |                |
+| `ciudad` (string)      | Si no es gratis, evaluar express (ítems ≥ 5                           |                       | monto ≥ 300000) | Costo de envío |
+| `tipoCliente` (string) | Si no cumple lo anterior → estándar                                   | Mensaje al cliente    |                 |                |
+| `items` (int)          | Agregar recargo si ciudad = "exterior"                                |                       |                 |                |
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+VARIABLES
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Nombre      | Tipo    | Propósito                           |
+| ----------- | ------- | ----------------------------------- |
+| monto       | decimal | Almacena el valor total del pedido  |
+| ciudad      | string  | Indica destino del envío            |
+| tipoCliente | string  | Define si es "nuevo" o "recurrente" |
+| items       | int     | Cantidad de productos comprados     |
+| categoria   | string  | Guarda el tipo de despacho asignado |
+| costoEnvio  | decimal | Calcula el costo final del envío    |
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+EJEMPLO IPO
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+Entrada:
+monto = 160000
+cliente = recurrente
+items = 2
+ciudad = medellin
+
+Proceso:
+Cumple condición de envío gratis.
+
+Salida:
+Categoría: Envío Gratis
+Costo: $0
+Mensaje: Gracias por tu fidelidad.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+CASOS DE PRUEBA
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+CASO NORMAL
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+Entrada:
+monto = 100000
+cliente = nuevo
+items = 6
+ciudad = medellin
+
+Resultado esperado:
+Envío Express
+Costo: 30000
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+CASO BORDE
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+Entrada:
+monto = 150000
+cliente = recurrente
+items = 1
+ciudad = exterior
+
+Resultado esperado:
+Envío Gratis
+Costo: 25000 (solo recargo exterior)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
