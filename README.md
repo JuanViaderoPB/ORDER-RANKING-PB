@@ -15,10 +15,10 @@ IPO
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Entradas               | Proceso                                                               | Salidas               |                 |                |
 | ---------------------- | --------------------------------------------------------------------- | --------------------- | --------------- | -------------- |
-| `monto` (decimal)      | Evaluar si aplica envío gratis (monto ≥ 150000 && cliente recurrente) | Categoría de despacho |                 |                |
-| `ciudad` (string)      | Si no es gratis, evaluar express (ítems ≥ 5                           |                       | monto ≥ 300000) | Costo de envío |
-| `tipoCliente` (string) | Si no cumple lo anterior → estándar                                   | Mensaje al cliente    |                 |                |
-| `items` (int)          | Agregar recargo si ciudad = "exterior"                                |                       |                 |                |
+| `monto`                | Evaluar si aplica envío gratis (monto ≥ 150000 && cliente recurrente) | Categoría de despacho |                 |                |
+| `ciudad`               | Si no es gratis, evaluar express (ítems ≥ 5                           |                       | monto ≥ 300000) | Costo de envío |
+| `tipoCliente`          | Si no cumple lo anterior → estándar                                   | Mensaje al cliente    |                 |                |
+| `items`                | Agregar recargo si ciudad = "exterior"                                |                       |                 |                |
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 VARIABLES
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
